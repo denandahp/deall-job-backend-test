@@ -41,8 +41,6 @@ async function auth_admin (req, res, next) {
             });
             req.user = decoded;
             let users = decoded.data.data
-            console.log(users)
-            console.log(roles.id, users.role_id)
             if(roles.id == users.role_id){
                 next();
                 return;

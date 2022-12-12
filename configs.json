@@ -14,4 +14,4 @@
     "saveUninitialized":true,
     "maxAge":2592000000},
     "secret":"sEcReT",
-    "secret2":"nusantera"}
+    "secret2":"sEcReT2"}

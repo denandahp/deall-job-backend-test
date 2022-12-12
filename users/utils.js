@@ -9,9 +9,11 @@ exports.serialize_users = (data, process) => {
         'username': data.username,
         'password': encryptPassword(data.password, data.username),
         'name': data.name,
-        'email': data.email ,
-        'role_id': data.role_id ,
-        'updated_at': date
+        'email': data.email,
+        'role_id': data.role_id,
+        'is_active': data.is_active,
+        'updated_at': date,
+        "is_deleted": data.is_deleted ? data.is_deleted : false
     }
 
     if(process == 'created'){
