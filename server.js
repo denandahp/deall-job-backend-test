@@ -78,6 +78,12 @@ const users = require('./users/routes.js');
 // OKKP
 app.use('/api/users', users)
 
+app.use('/api', (req, res, next) => {
+        res.status(200).json({
+            status : 200,
+            message: "Welcome to Deall Job Assignment Test"});
+    })
+
 
 // Error Middleware
 app.use(require('./libs/error.js'));
