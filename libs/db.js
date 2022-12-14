@@ -14,6 +14,6 @@ if (process.env.POSTGRES_USER == undefined) {
         post: process.env.POSTGRES_PORT
     };
 }
-
+console.log(database)
 const { Pool } = require('pg');
 module.exports = new Pool(database);

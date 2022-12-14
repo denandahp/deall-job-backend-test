@@ -84,7 +84,3 @@ docs
 jsconfig.json
 
 media/**
-sertifikat/sppb-psat/**
-.env
-
-si-psat-core

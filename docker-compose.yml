@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+    postgres:
+        image: postgres:13
+        container_name: postgres
+        environment:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+        volumes:
+          - ./sql/pg.sql:/docker-entrypoint-initdb.d/pg.sql
+        restart:
+          always
+        networks:
+          - deall-networks
+    deall-job:
+        #Use Build if in local
+        #Use image if in Production
+        build:
+            context: .
+            dockerfile: Dockerfile
+        # image: denandahp/deall-job-test:latest
+        container_name: deall-job
+        env_file: .env
+        environment:
+          WAIT_HOSTS: postgres:5432
+            - TZ=Asia/Jakarta
+            - NODE_ENV=PRODUCTION
+            - POSTGRES_USER=postgres
+            - POSTGRES_HOST=localhost
+            - POSTGRES_DATABASE=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_SSLMODE=false
+            - POSTGRES_PORT=5432
+        networks:
+            - deall-networks
+        ports:
+            - 3000:3000
+        # command: user:postgre host:18.216.58.97 db:petdiary pass:postgres  -- npm start
+        #Use Volume if in local & comment if in production
+        volumes:
+            - .:/app
+
+networks:
+   deall-networks:
+
+    
