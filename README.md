@@ -63,3 +63,8 @@ All API documentation can be accessed at the following link:
 ```
 https://documenter.getpostman.com/view/9038393/2s8YzUyhZ4
 ```
+```
+Admin Credential
+Username: superuser
+Password: 12345
+```
