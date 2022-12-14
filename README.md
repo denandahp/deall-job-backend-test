@@ -9,59 +9,35 @@ A simple rest api used to CRUD Users.
 ### How to run the apps :
 
 #### 1. Create new file `docker-compose.yml` and fill with this code
-
+```
 version: '3.8'
-
 services:
-
     postgres:
-
-    image: postgres:13
-
-    container_name: postgres
-
-    environment:
-
-    POSTGRES_PASSWORD: postgres
-
-    POSTGRES_USER: postgres
-
-    volumes:
-
-    - ./sql/pg.sql:/docker-entrypoint-initdb.d/pg.sql
-
-    restart:
-
-    always
-
-    networks:
-
-    - deall-networks
-
+        image: postgres:13
+        container_name: postgres
+        environment:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+        volumes:
+          - ./sql/pg.sql:/docker-entrypoint-initdb.d/pg.sql
+        restart:
+          always
+        networks:
+          - deall-networks
     deall-job:
-
-    image: denandahp/deall-job-test:latest
-
-    container_name: deall-job
-
-    env_file: .env
-
-    environment:
-
-    WAIT_HOSTS: postgres:5432
-
-    networks:
-
-    - deall-networks
-
-    ports:
-
-    - 3000:3000
+        image: denandahp/deall-job-test:latest
+        container_name: deall-job
+        env_file: .env
+        environment:
+          WAIT_HOSTS: postgres:5432
+        networks:
+            - deall-networks
+        ports:
+            - 3000:3000
 
 networks:
-
    deall-networks:
-
+```
 #### 2. Launch the apps
 
 Build docker compose
